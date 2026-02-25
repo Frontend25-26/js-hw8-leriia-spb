@@ -34,6 +34,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .cell.white {
@@ -44,8 +45,12 @@ body {
     background: #b58863;
 }
 
+.cell.highlight {
+    background: #7fc97f;
+}
+
 .piece {
-    width: 5%;
+    width: 70%;
     aspect-ratio: 1;
     border-radius: 50%;
     border: 2px solid #000;
@@ -63,4 +68,49 @@ body {
     background: #272727;
 }
 
+.piece.selected {
+    outline: 3px solid #ff0;
+    transform: scale(1.1);
+}
 
+.piece.king::after {
+    content: "♛";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 1.5vw;
+    color: gold;
+}
+
+.explosion {
+    position: absolute;
+    width: 90%;
+    pointer-events: none;
+}
+
+.win-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.win-message {
+    background: white;
+    padding: 30px 50px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.win-message button {
+    margin-top: 15px;
+    padding: 8px 20px;
+    font-size: 16px;
+}
