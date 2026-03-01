@@ -115,16 +115,12 @@ function showMoves(piece) {
 }
 
 function removePiece(piece) {
-    const cell = piece.parentElement;
-    piece.remove();
-    const explosion = document.createElement("img");
-    explosion.src = "./media/explosion-gif.gif";
-    explosion.classList.add("explosion");
-    cell.appendChild(explosion);
-    setTimeout(() => {
-        explosion.remove();
+    piece.classList.add('removing');
+    piece.addEventListener('animationend', function handler() {
+        piece.removeEventListener('animationend', handler);
+        piece.remove();
         checkWin();
-    }, 800);
+    });
 }
 
 function checkKing(piece) {
